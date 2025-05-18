@@ -11,7 +11,7 @@ document.querySelector('#app').innerHTML = `
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
     </a>
-    <h1 class="font-bold m-2 text-2xl truncate" >Hello Vite!</h1>
+    <h1 class="font-bold m-2 text-2xl truncate text-primary" >Hello Vite!</h1>
     <div class="card">
       <button id="counter" type="button" class="bg-blue-300 h-5 p-4 inline-block bg-teal-400"></button>
     </div>
