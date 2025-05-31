@@ -22,36 +22,6 @@ const giveArticles = async function (order = 'created_at.desc') {
 };
 
 
-document.getElementById("displayMethodForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-  const displayValue = document.querySelector('input[name="sort"]:checked')?.value;
-  const articles = await giveArticles(displayValue);
-  const articlesText = articles.map(article =>
-    `<div class="article">
-      <h2>${article.title}</h2>
-      <h3>${article.subtitle}</h3>
-      <address>${article.author}</address>
-      <time datetime=${article.created_at}>${format(new Date(article.created_at), "dd MMMM yyyy, HH:mm", { locale: pl })}</time>
-      <p>${article.content}</p>
-    </div>`
-  ).join('');
-  console.log(articlesText)
-  datacontent.innerHTML = articlesText;
-})
-
-const datacontent = document.getElementById('articles');
-const articles = await giveArticles();
-const articlesText = articles.map(article =>
-  `<div class="article">
-    <h2>${article.title}</h2>
-    <h3>${article.subtitle}</h3>
-    <address>${article.author}</address>
-    <time datetime=${article.created_at}>${format(new Date(article.created_at), "dd MMMM yyyy, HH:mm", { locale: pl })}</time>
-    <p>${article.content}</p>
-  </div>`
-).join('');
-console.log(articlesText)
-datacontent.innerHTML = articlesText
 
 
 
@@ -106,3 +76,41 @@ document.getElementById("sendArticle").addEventListener("submit", async function
 
 
 })
+
+
+document.getElementById("displayMethodForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const displayValue = document.querySelector('input[name="sort"]:checked')?.value;
+  const articles = await giveArticles(displayValue);
+  const articlesText = articles.map(article =>
+    `<div class="article">
+      <h2>${article.title}</h2>
+      <h3>${article.subtitle}</h3>
+      <address>${article.author}</address>
+      <time>${format(new Date(article.created_at), "dd MMMM yyyy, HH:mm", { locale: pl })}</time>
+      <p>${article.content}</p>
+    </div>`
+  ).join('');
+  console.log(articlesText)
+  const datacontent = document.getElementById('articles');
+  datacontent.innerHTML = articlesText;
+})
+
+
+async function init() {
+  const datacontent = document.getElementById('articles');
+  const articles = await giveArticles();
+  const articlesText = articles.map(article =>
+    `<div class="article">
+      <h2>${article.title}</h2>
+      <h3>${article.subtitle}</h3>
+      <address>${article.author}</address>
+      <time datetime=${article.created_at}>${format(new Date(article.created_at), "dd MMMM yyyy, HH:mm", { locale: pl })}</time>
+      <p>${article.content}</p>
+    </div>`
+  ).join('');
+  console.log(articlesText)
+  datacontent.innerHTML = articlesText;
+}
+
+init();
