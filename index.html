@@ -11,6 +11,21 @@
 
 <body>
   <div id="articles"></div>
+  <label for="displayMethod">Wybierz sposób sortowania artykułów</label>
+  <form id="displayMethodForm">
+    <fieldset id="displayMethod">
+      <input type="radio" id="dataAsc" name="sort" value="created_at.asc">
+      <label for="dataAsc">Po dacie rosnąco</label>
+
+      <input type="radio" id="dataDesc" name="sort" value="created_at.desc">
+      <label for="dataDesc">Po dacie malejąco</label>
+
+      <input type="radio" id="alphabet" name="sort" value="title.asc">
+      <label for="aplhabet">Alfabetycznie po nazwie</label>
+    </fieldset>
+    <button>Zatwierdź</button>
+  </form>
+
   <script type="module" src="/src/main.js"></script>
 
   <div id="addArticleForm">
@@ -20,8 +35,9 @@
       <label for="subtitle">Podtytuł:</label><input id="subtitle" type="text">
       <label for="author">Autor:
       </label> <input id="author" type="text">
+      <label for="createdAt">Data dodania:</label><input id="createdAt" type="date">
       <div><label for="content">Treść artykułu:</label><textarea id="content" type="text"></textarea></div>
-      <button type="submit">Prześlij</button>
+      <button id="sendArticleButton" type="submit">Prześlij</button>
     </form>
   </div>
 </body>
